@@ -1,4 +1,4 @@
-# edge-lib-expression
+# lib-expression
 
 ## Compararison Types
 
