@@ -57,6 +57,8 @@ class ExpressionCompilerTest {
     assertEquals("A >= 1", ExpressionResolver.compile("A >= 1").toString(), "greater than and equals (>=)");
     assertEquals("A < 1", ExpressionResolver.compile("A < 1").toString(), "less than (<)");
     assertEquals("A <= 1", ExpressionResolver.compile("A <= 1").toString(), "less than and equals (<=)");
+    assertEquals("A IN 1", ExpressionResolver.compile("A IN 1").toString(), "contains (IN)");
+    assertEquals("A NOT IN 1", ExpressionResolver.compile("A NOT IN 1").toString(), "not contains (NOT IN)");
   }
   
   @Test

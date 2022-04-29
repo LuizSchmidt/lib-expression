@@ -1,13 +1,17 @@
 package com.edge.expression.expression.value;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.edge.expression.tokenizer.Token;
 import com.edge.expression.tokenizer.TokenStream;
 import com.edge.expression.tokenizer.TokenType;
 
+import lombok.Data;
 import lombok.Getter;
 
+@Data
 public class IdentifierValue implements Value {
 
   @Getter
@@ -29,6 +33,9 @@ public class IdentifierValue implements Value {
       return ((Long) value).doubleValue();
     } else if (value instanceof Boolean) {
       return ((Boolean) value).booleanValue();
+    } else if (value instanceof List) {
+      return ((List<?>) value).stream().map(v -> v instanceof Number ? ((Number) v).doubleValue() : v)
+          .collect(Collectors.toList());
     } else {
       return value;
     }

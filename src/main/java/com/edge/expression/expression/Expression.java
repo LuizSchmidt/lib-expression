@@ -34,6 +34,9 @@ public class Expression implements Operator {
       stream.poll(TokenType.RIGHT_PAR);
     } else if (stream.isNext(TokenType.BOOLEAN)) {
       operation = new BooleanOperator(stream);
+    } else if (stream.isNext(TokenType.LEFT_BRACKET)) {
+      int offset = stream.getOffSetNextToken(TokenType.RIGHT_BRACKET);
+      operation = ComparisorFactory.instanceOf(stream, offset);
     } else {
       operation = ComparisorFactory.instanceOf(stream);
     }

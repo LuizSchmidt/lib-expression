@@ -217,4 +217,17 @@ public class TokenStream {
   public String toString() {
     return tokens.toString();
   }
+
+
+  public int getOffSetNextToken(TokenType tokenType) {
+    int count = 0; 
+    Token token = null;
+    
+    while(token == null) {
+      token = peek(count, tokenType);
+      count++;
+    }
+    
+    return count;
+  }
 }

@@ -1,7 +1,8 @@
 package com.edge.expression.expression.factory;
 
 import com.edge.expression.exception.InvalidExpressionException;
-import com.edge.expression.expression.comparison.BooleanOperator;
+import com.edge.expression.expression.value.ArrayValue;
+import com.edge.expression.expression.value.BooleanValue;
 import com.edge.expression.expression.value.IdentifierValue;
 import com.edge.expression.expression.value.LiteralValue;
 import com.edge.expression.expression.value.NumericValue;
@@ -25,7 +26,9 @@ public class ValueFactory {
       case IDENTIFIER:
         return new IdentifierValue(stream);
       case BOOLEAN:
-        return new BooleanOperator(stream);
+        return new BooleanValue(stream);
+      case LEFT_BRACKET:
+        return new ArrayValue(stream);
       default:
         throw new InvalidExpressionException("Unexpected token " + token, token.getStart());
     }

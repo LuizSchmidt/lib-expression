@@ -13,12 +13,11 @@ public enum TokenType {
   OR("(OR)"),
   
   /**
-   * Identificators
+   * Array
    */
-  BOOLEAN("(TRUE|FALSE|true|false)"),
-  LITERAL("\\'([^\\']+)\\'"),
-  NUMERIC("([0-9]+)"),
-  IDENTIFIER("([.\\w]+)"),
+  LEFT_BRACKET("(\\[)"),
+  RIGHT_BRACKET("(\\])"),
+  SEPARATOR("(\\,)"),
   
   /**
    * Parentheses
@@ -35,6 +34,16 @@ public enum TokenType {
   GREATER_THAN_OR_EQUAL_TO("(>=)"),
   LESS_THAN("(<[^=])"),
   LESS_THAN_OR_EQUAL_TO("(<=)"),
+  NOT_IN ("(NOT IN)"),
+  IN("(IN)"),
+  
+  /**
+   * Identificators
+   */
+  BOOLEAN("(TRUE|FALSE|true|false)"),
+  LITERAL("\\'([^\\']+)\\'"),
+  NUMERIC("([0-9]+)"),
+  IDENTIFIER("([.\\w]+)"),
   
   /**
    * Ignores

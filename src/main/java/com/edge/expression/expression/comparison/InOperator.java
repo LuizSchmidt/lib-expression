@@ -1,19 +1,20 @@
 package com.edge.expression.expression.comparison;
 
+import java.util.List;
 import java.util.Map;
 
 import com.edge.expression.tokenizer.TokenStream;
 import com.edge.expression.tokenizer.TokenType;
 
-public class EqualsOperator extends ComparisonOperator {
+public class InOperator extends ComparisonOperator {
 
-  public EqualsOperator(TokenStream stream) {
+  public InOperator(TokenStream stream) {
     super(stream);
   }
 
   @Override
   protected TokenType getOperatorTokenType() {
-    return TokenType.EQUAL_TO;
+    return TokenType.IN;
   }
 
   @Override
@@ -21,15 +22,15 @@ public class EqualsOperator extends ComparisonOperator {
     Object firstValue = firstElement.getValue(data);
     Object secondValue = secondElement.getValue(data);
 
-    if (firstValue == null || secondValue == null) {
-      return (firstValue == null && secondValue == null);
+    if (firstValue == null || secondValue == null || !(secondValue instanceof List)) {
+      return false;
     }
-    
-    return firstValue.equals(secondValue);
+
+    return ((List<?>) secondValue).stream().anyMatch(v -> v.equals(firstValue));
   }
 
   @Override
   public String toString() {
-    return firstElement + " = " + secondElement;
+    return firstElement + " IN " + secondElement;
   }
 }

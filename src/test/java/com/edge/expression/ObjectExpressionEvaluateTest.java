@@ -1,5 +1,6 @@
 package com.edge.expression;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Map;
@@ -14,7 +15,7 @@ class ObjectExpressionEvaluateTest {
   void testEquals() {
     assertTrue(ExpressionResolver.evaluate("customer.name = 'luiz'", info), "equals TRUE");
     assertTrue(ExpressionResolver.evaluate("customer.age = 21", info), "equals TRUE");
-    
+    assertFalse(ExpressionResolver.evaluate("customer.age = '21'", info), "equals FALSE");
     assertTrue(ExpressionResolver.evaluate("value_payment >= 10.1", info), "equals TRUE");
   }
 }

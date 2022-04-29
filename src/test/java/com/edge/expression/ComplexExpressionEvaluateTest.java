@@ -23,7 +23,7 @@ class ComplexExpressionEvaluateTest {
     validateTrue("(name = 'foo' AND age >= 18) OR isMarried = false");
     validateFalse("(name = 'bar' AND age >= 18) OR isMarried = false");
     validateTrue("(name = 'bar' OR FALSE OR age = 18) OR isMarried = true");
-    validateFalse("name = 'bar' OR age = 10 OR isMarried = false");
+    validateFalse("name = 'bar' OR age = 10 OR isMarried = false AND name IN ['bar', 2, 4]");
   }
 
   private void validateTrue(String expression) {
